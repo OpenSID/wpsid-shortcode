@@ -28,38 +28,40 @@ class OpenSID_Frontend_Controller extends OpenSID_Controller {
 			}
 		}
 	}
-	private static function opensid_shortcode($this, $shortcode, $function = '', $remove_old = false) {
+	private function opensid_shortcode($shortcode, $function = '', $remove_old = false) {
 		if ( empty( $function ) )
 			$function = $shortcode;
 		$shortcode = 'wpsid_' . $shortcode;
 		if ( $remove_old )
 			remove_shortcode( $shortcode );
-		add_shortcode( $shortcode, array($this, $function) );
+		add_shortcode( $shortcode, array($this,$function) );
 	}
 	public function init_shortcodes() {
-		self::opensid_shortcode( $this, 'version' );
-		self::opensid_shortcode( $this, 'data_wilayah' );
-		self::opensid_shortcode( $this, 'data_pendidikan' );
-		self::opensid_shortcode( $this, 'data_pekerjaan' );
-		self::opensid_shortcode( $this, 'data_perkawinan' );
-		self::opensid_shortcode( $this, 'data_agama' );
-		self::opensid_shortcode( $this, 'data_jenis_kelamin' );
-		self::opensid_shortcode( $this, 'data_warga_negara' );
-		self::opensid_shortcode( $this, 'data_status_penduduk' );
-		self::opensid_shortcode( $this, 'data_golongan_darah' );
-		self::opensid_shortcode( $this, 'data_cacat' );
-		self::opensid_shortcode( $this, 'data_menahun' );
-		self::opensid_shortcode( $this, 'data_umur' );
-		self::opensid_shortcode( $this, 'data_pendidikan_sedang_ditempuh' );
-		self::opensid_shortcode( $this, 'data_cara_kb' );
-		self::opensid_shortcode( $this, 'data_akta_kelahiran' );
-		self::opensid_shortcode( $this, 'layanan_mandiri_widget' );
-		self::opensid_shortcode( $this, 'layanan_mandiri_detail' );
+		$this->opensid_shortcode('version');
+		$this->opensid_shortcode( 'data_wilayah' );
+		$this->opensid_shortcode( 'data_pendidikan' );
+		$this->opensid_shortcode( 'data_pekerjaan' );
+		$this->opensid_shortcode( 'data_perkawinan' );
+		$this->opensid_shortcode( 'data_agama' );
+		$this->opensid_shortcode( 'data_jenis_kelamin' );
+		$this->opensid_shortcode( 'data_warga_negara' );
+		$this->opensid_shortcode( 'data_status_penduduk' );
+		$this->opensid_shortcode( 'data_golongan_darah' );
+		$this->opensid_shortcode( 'data_cacat' );
+		$this->opensid_shortcode( 'data_menahun' );
+		$this->opensid_shortcode( 'data_umur' );
+		$this->opensid_shortcode( 'data_pendidikan_sedang_ditempuh' );
+		$this->opensid_shortcode( 'data_cara_kb' );
+		$this->opensid_shortcode( 'data_akta_kelahiran' );
+		$this->opensid_shortcode( 'layanan_mandiri_widget' );
+		$this->opensid_shortcode( 'layanan_mandiri_detail' );
+		
 	}
 	public function version($atts, $content = null) {
 		$shortcode_atts = shortcode_atts( array(
 			'type' => 'plain', //default: plain
 		), $atts );
+		
 		return OpenSID::load_shortcode( 'version', $shortcode_atts );
 	}
 	public function data_wilayah() { return OpenSID::load_shortcode( 'data_wilayah' ); }

@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL||E_WARNING);
 defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 // define( 'OPENSID_OPTION_KEY', 'wpsid_config' );
 if(strpos($_SERVER['HTTP_HOST'], '.demo.siini.com') !== false || strpos($_SERVER['HTTP_HOST'], '.devhost') !== false)
@@ -46,7 +47,7 @@ defined( 'OPENSID_DB_HOST' ) or define( 'OPENSID_DB_HOST', opensid_get_option( '
 defined( 'OPENSID_HOMEURL' ) or define( 'OPENSID_HOMEURL', opensid_get_option( 'sid_home' ) );
 define( 'OPENSID_CONNECT', 'mysqli://' . OPENSID_DB_USER . ':' . OPENSID_DB_PASS . '@' . OPENSID_DB_HOST . '/' . OPENSID_DB_NAME );
 function opensid_check_sid_path() {
-	return is_dir( opensid_get_option( 'sid_path' ) . '/donjo-sys' );
+	return is_dir( opensid_get_option( 'sid_path' ) . '/system' );
 }
 function opensid_check_database_connection() {
 	if ( ! function_exists( 'opensid_ci_load_database' ) )

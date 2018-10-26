@@ -8,7 +8,7 @@ class CI_Model {
 	public function __construct(){
 		$this->db =& opensid_ci_load_database();
 		$this->load = new OPENSID___FAKE_LOAD;
-		include_once OPENSID_APPPATH . '/donjo-sys/core/Input.php';
+		include_once OPENSID_APPPATH . '/system/core/Input.php';
 		$this->input = new CI_Input;
 	}
 	
