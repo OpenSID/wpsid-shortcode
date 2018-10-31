@@ -1,6 +1,8 @@
 <?php
-defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
-abstract class OpenSID {
+namespace WPSID;
+
+abstract class OpenSID
+{
 	const version = '1.0.9.2';
 	public static $model_opensid;
 	public static $controller;
@@ -16,30 +18,20 @@ abstract class OpenSID {
 			self::$model_opensid = self::load_model( 'opensid' );
 		}
 
-		$route[1] = 'index';
-
 		if ( is_admin() ) {
-			$route[0] = 'Admin';
-			// self::$controller = self::load_controller( $controller );
+			$controller = 'admin';
+			self::$controller = self::load_controller( $controller );
 		} else {
 			if(OPENSID_READY){
 				$controller = 'frontend';
 				self::$controller = self::load_controller( $controller );
 			}
 		}
-
-		$self = new self();
-		$self->run_app($controller, $action);
-	}
-
-	public function run_app($controller, $action) {
-		$CI = new $controller();
-		$CI->$action();
 	}
 
 	public static function load_ci_model( $ci_model, array $data = array() ) {
-		self::load_file( 'class-ci-model.php', 'classes' );
-		$suffix = (strtolower($ci_model) == 'first') ? '_M' : '_Model';
+		//self::load_file( 'class-ci-model.php', 'classes' );
+		$suffix = (strtolower($ci_model) == 'first') ? '_M' : '_model';
 		$ci_model = ( !empty($data['__model_class_name__']) ) ? $data['__model_class_name__'] : $ci_model . $suffix;
 
 		$lwrci_model = strtolower( $ci_model );
@@ -108,4 +100,4 @@ abstract class OpenSID {
 			'The installed version of WordPress is too old for the OpenSID plugin! OpenSID requires an up-to-date version! <strong>Please <a href="' . esc_url( admin_url( 'update-core.php' ) ) . '">update your WordPress installation</a></strong>!' .
 			"</p></div>\n";
 	}
-} // class OpenSID
+}

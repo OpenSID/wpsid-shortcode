@@ -37,8 +37,9 @@
 // Prohibit direct script loading.
 defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 
-
 // Define certain plugin variables as constants.
 define( 'OPENSID__FILE__', __FILE__ );
+define('WPSID_DIR', __DIR__ .'/');
 
-require_once dirname( __FILE__ ) . '/init.php';
+require __DIR__ .'/functions.php';
+add_action( 'init', array('WPSID', 'run') );
