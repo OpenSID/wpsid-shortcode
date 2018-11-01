@@ -17,9 +17,6 @@ class WPSID
 		}
 	}
 
-	static function init() {
-	}
-
 	static function run_admin() {
 		add_action('admin_menu', array(__CLASS__, 'set_admin_menu'));
 		add_action('admin_init', array(__CLASS__, 'register_wpsid_setting'));
@@ -73,13 +70,7 @@ class WPSID
 		require self::$config['ci_sys_path'] .'core/Common.php';
 
 		self::load_ci_cores();
-
-		load_class('Hooks', 'core')->call_hook('pre_controller');
-
 		self::$CI = new wpsid\Shortcode();
-
-		self::$CI->hooks->call_hook('post_controller_constructor');
-
 		self::register_shortcodes();
 	}
 
@@ -106,9 +97,6 @@ class WPSID
 	static function shortcode_callback($attrs, $arg1, $code) {
 		$code = str_replace('wpsid_', '', $code);
 		call_user_func(array(self::$CI, $code), $attrs);
-
-		self::$CI->hooks->call_hook('post_controller');
-
 		self::$CI->output->_display();
 	}
 
