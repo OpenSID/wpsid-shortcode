@@ -42,4 +42,4 @@ define( 'OPENSID__FILE__', __FILE__ );
 define('WPSID_DIR', __DIR__ .'/');
 
 require __DIR__ .'/functions.php';
-add_action( 'init', array('WPSID', 'run') );
+is_wplogin() OR add_action( 'init', array('WPSID', 'run') );

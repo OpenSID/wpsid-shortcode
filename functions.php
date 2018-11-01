@@ -50,6 +50,13 @@ function &get_instance() {
 	return CI_Controller::get_instance();
 }
 
+function is_wplogin() {
+	foreach (get_included_files() as $file) {
+		if (strpos($file, 'wp-login.php') !== false)
+			return true;
+	}
+}
+
 //
 // function opensid_load_textdomain() {
 // 	load_plugin_textdomain('wpsid-shortcode', false, basename(WPSID_DIR) . '/locale');
