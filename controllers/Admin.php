@@ -9,7 +9,7 @@ class Admin
 
 	function index() {
 		WPSID::sid_path_ready() OR add_settings_error('opensid_error_sid_path', '', __('SID Path error: not directory', 'wpsid-shortcode'), 'error');
-		$this->render_view('admin/index');
+		$this->render_view('admin/config');
 	}
 
 	function shortcode() {
