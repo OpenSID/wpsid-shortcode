@@ -89,7 +89,6 @@ class WPSID
 
 		foreach ($methods as $method) {
 			$code = $method->getName();
-			add_shortcode($code, $cb);
 			add_shortcode('wpsid_'. $code, $cb);
 		}
 	}
