@@ -27,7 +27,7 @@ function class_autoloader($class) {
 	}
 
 	if (preg_match('/_m(odel)?$/', $class)) {
-		$paths = array(WPSID::config('ci_app_path'), __DIR__);
+		$paths = array(WPSID::config('ci_app_path'), WPSID_DIR);
 
 		foreach ($paths as $path) {
 			$file = "$path/models/$filename.php";
