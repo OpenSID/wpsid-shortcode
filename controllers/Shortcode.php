@@ -15,7 +15,7 @@ class Shortcode extends \CI_Controller
 	public function version($attrs) {
 		$type = element('type', $attrs) ?: 'plain';
 		$data['wp_version'] = get_bloginfo( 'version' );
-		$data['opensid_version'] = (new Opensid_model)->get_version();
+		$data['opensid_version'] = $this->opensid->get_version();
 		$data['plugin_version'] = WPSID::VERSION;
 
 		switch($type) {
