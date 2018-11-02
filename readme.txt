@@ -28,7 +28,7 @@ If you find this useful, [**please consider donating**](http://www.siini.com/wor
 	Resulted dirs will be:
    './opensid'
    './opensid/donjo-app/'
-   './opensid/donjo-sys/'
+   './opensid/system/'
    './opensid/....'
    './wp-admin'
    './wp-content'

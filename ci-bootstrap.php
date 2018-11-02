@@ -33,6 +33,7 @@ include OPENSID_APPPATH . '/system/core/Utf8.php';
 $SEC =new CI_Security;
 $CFG =new CI_Config;
 $UNI =new CI_Utf8;
+
 function hash_pin($pin=""){
 	$pin = strrev($pin);
 	$pin = $pin*77;

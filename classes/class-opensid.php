@@ -32,7 +32,7 @@ abstract class OpenSID {
 		$suffix = (strtolower($ci_model) == 'first') ? '_M' : '_Model';
 		$ci_model = ( !empty($data['__model_class_name__']) ) ? $data['__model_class_name__'] : $ci_model . $suffix;
 		
-		$lwrci_model = strtolower( $ci_model );
+		$lwrci_model = ucfirst (strtolower( $ci_model ));
 		$file = ( !empty($data['__model_class_file__']) ) ? $data['__model_class_file__'] : OPENSID_APPPATH . '/donjo-app/models/' . $lwrci_model . '.php';
 		require_once $file;
 		$the_class = new $ci_model();
