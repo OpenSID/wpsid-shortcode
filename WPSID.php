@@ -66,7 +66,7 @@ class WPSID
 		self::$config['ci_sys_path'] = realpath(self::get_ci_sys_path()) .'/';
 		self::$config['ci_app_path'] = realpath(self::get_ci_app_path()) .'/';
 
-		require WPSID_DIR .'constants.php';
+		require WPSID_DIR .'config/constants.php';
 		require self::$config['ci_sys_path'] .'core/Common.php';
 
 		self::load_ci_cores();
