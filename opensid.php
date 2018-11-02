@@ -41,5 +41,5 @@ defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
 define( 'OPENSID__FILE__', __FILE__ );
 define('WPSID_DIR', __DIR__ .'/');
 
-require __DIR__ .'/functions.php';
+require __DIR__ .'/core/functions.php';
 is_wplogin() OR add_action( 'init', array('WPSID', 'run') );
