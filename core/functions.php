@@ -8,7 +8,7 @@ function class_autoloader($class) {
 	));
 
 	$paths = array(
-		WPSID_DIR,
+		WPSID_DIR .'core',
 		WPSID_DIR .'classes',
 		WPSID_DIR .'controllers',
 	);
