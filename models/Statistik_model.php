@@ -17,7 +17,7 @@ class Statistik_model extends \CI_Model
 			array('grafik' => 'bar', 'tabel' => 'table')
 		) ?: 'default';
 
-		return "statistik_$presentasi";
+		return "stats/$presentasi";
 	}
 
 	public function get_data($jenis) {
