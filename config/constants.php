@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('ABSPATH') OR exit('No direct script access allowed');
 
 /** @deprecated use WPSID::OPTION_KEY */
 define('OPENSID_OPTION_KEY', WPSID::OPTION_KEY);
