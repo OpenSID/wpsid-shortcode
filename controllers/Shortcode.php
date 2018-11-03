@@ -5,11 +5,13 @@ use WPSID;
 
 class Shortcode extends \CI_Controller
 {
+
 	public function __construct() {
 		parent::__construct();
 		$this->opensid = new Opensid_model();
 		$this->statistik = new Statistik_model();
 		$this->opensid->load_donjolib_helper();
+		$this->register_stats_shortcodes();
 	}
 
 	public function version($attrs) {
@@ -41,104 +43,6 @@ class Shortcode extends \CI_Controller
 		$data['main'] = $wilayah->list_data();
 
 		$this->load->view('data_wilayah', $data);
-	}
-
-	public function data_pendidikan($atts) {
-		$this->load->view(
-			$this->statistik->get_view($atts),
-			$this->statistik->get_data(0)
-		);
-	}
-
-	public function data_pekerjaan($atts) {
-		$this->load->view(
-			$this->statistik->get_view($atts),
-			$this->statistik->get_data(1)
-		);
-	}
-
-	public function data_perkawinan($atts) {
-		$this->load->view(
-			$this->statistik->get_view($atts),
-			$this->statistik->get_data(2)
-		);
-	}
-
-	public function data_agama($atts) {
-		$this->load->view(
-			$this->statistik->get_view($atts),
-			$this->statistik->get_data(3)
-		);
-	}
-
-	public function data_jenis_kelamin($atts) {
-		$this->load->view(
-			$this->statistik->get_view($atts),
-			$this->statistik->get_data(4)
-		);
-	}
-
-	public function data_warga_negara($atts) {
-		$this->load->view(
-			$this->statistik->get_view($atts),
-			$this->statistik->get_data(5)
-		);
-	}
-
-	public function data_status_penduduk($atts) {
-		$this->load->view(
-			$this->statistik->get_view($atts),
-			$this->statistik->get_data(6)
-		);
-	}
-
-	public function data_golongan_darah($atts) {
-		$this->load->view(
-			$this->statistik->get_view($atts),
-			$this->statistik->get_data(7)
-		);
-	}
-
-	public function data_cacat($atts, $content = null) {
-		$this->load->view(
-			$this->statistik->get_view($atts),
-			$this->statistik->get_data(9)
-		);
-	}
-
-	public function data_menahun($atts, $content = null) {
-		$this->load->view(
-			$this->statistik->get_view($atts),
-			$this->statistik->get_data(10)
-		);
-	}
-
-	public function data_umur($atts, $content = null) {
-		$this->load->view(
-				$this->statistik->get_view($atts),
-				$this->statistik->get_data(13)
-		);
-	}
-
-	public function data_pendidikan_sedang_ditempuh($atts, $content = null) {
-		$this->load->view(
-			$this->statistik->get_view($atts),
-			$this->statistik->get_data(14)
-		);
-	}
-
-	public function data_cara_kb($atts, $content = null) {
-		$this->load->view(
-			$this->statistik->get_view($atts),
-			$this->statistik->get_data(16)
-		);
-	}
-
-	public function data_akta_kelahiran($atts, $content = null) {
-		$this->load->view(
-			$this->statistik->get_view($atts),
-			$this->statistik->get_data(17)
-		);
 	}
 
 	public function layanan_mandiri_widget() {
@@ -198,5 +102,41 @@ class Shortcode extends \CI_Controller
 		}
 
 		$this->load->view("mandiri/$view", $data);
+	}
+
+	protected $stats_shortcodes = array(
+		'data_pendidikan' => 0,
+		'data_pekerjaan' => 1,
+		'data_perkawinan' => 2,
+		'data_agama' => 3,
+		'data_jenis_kelamin' => 4,
+		'data_warga_negara' => 5,
+		'data_status_penduduk' => 6,
+		'data_golongan_darah' => 7,
+		'data_cacat' => 9,
+		'data_menahun' => 10,
+		'data_umur' => 13,
+		'data_pendidikan_sedang_ditempuh' => 14,
+		'data_cara_kb' => 16,
+		'data_akta_kelahiran' => 17,
+	);
+
+	protected function register_stats_shortcodes() {
+		$cb = array('WPSID', 'shortcode_callback');
+
+		foreach ($this->stats_shortcodes as $code => $stat_type) {
+			add_shortcode('wpsid_'. $code, $cb);
+		}
+	}
+
+	public function __call($method, $args) {
+		foreach ($this->stats_shortcodes as $code => $stat_type) {
+			if ($code != $method) continue;
+
+			return $this->load->view(
+				$this->statistik->get_view($args[0]),
+				$this->statistik->get_data($stat_type)
+			);
+		}
 	}
 }
