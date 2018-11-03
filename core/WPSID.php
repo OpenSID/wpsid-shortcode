@@ -97,6 +97,7 @@ class WPSID
 		$code = str_replace('wpsid_', '', $code);
 		call_user_func(array(self::$CI, $code), $attrs);
 		self::$CI->output->_display();
+		self::$CI->output->set_output(null);
 	}
 
 	static function config($key, $value='') {
