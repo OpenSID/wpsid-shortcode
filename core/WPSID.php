@@ -88,10 +88,11 @@ class WPSID
 		$cb = array(__CLASS__, 'shortcode_callback');
 
 		foreach ($methods as $method) {
-			if ($method->isConstructor()) continue;
-			
 			$code = $method->getName();
-			add_shortcode('wpsid_'. $code, $cb);
+
+			if (strpos($code, '__') === false) {
+				add_shortcode('wpsid_'. $code, $cb);
+			}
 		}
 	}
 
