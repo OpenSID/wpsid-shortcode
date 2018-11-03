@@ -1,5 +1,5 @@
 <?php
 
-include 'statistik_table.php';
-include 'statistik_bar.php';
-include 'statistik_pie.php';
+include 'table.php';
+include 'bar.php';
+include 'pie.php';
