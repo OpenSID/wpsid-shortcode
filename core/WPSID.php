@@ -84,10 +84,12 @@ class WPSID
 
 	protected static function register_shortcodes() {
 		$refobj = new \ReflectionObject(self::$CI);
-		$methods = $refobj->getMethods();
+		$methods = $refobj->getMethods(ReflectionMethod::IS_PUBLIC);
 		$cb = array(__CLASS__, 'shortcode_callback');
 
 		foreach ($methods as $method) {
+			if ($method->isConstructor()) continue;
+			
 			$code = $method->getName();
 			add_shortcode('wpsid_'. $code, $cb);
 		}
