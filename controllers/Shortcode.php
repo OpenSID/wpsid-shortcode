@@ -54,11 +54,13 @@ class Shortcode extends \CI_Controller
 	}
 
 	public function layanan_mandiri_detail() {
+		$First_m = new \First_m();
+
 		if( isset($_POST['mandiri']) && $_POST['mandiri'] == 'login' )
-			(new \First_m)->siteman();
+			$First_m->siteman();
 
 		if( isset($_REQUEST['mandiri']) && $_REQUEST['mandiri'] == 'logoff' )
-			OpenSID::load_ci_model('first')->logout();
+			$First_m->logout();
 
 		if (!$this->opensid->is_user_logged_in())
 			return $this->layanan_mandiri_widget();
@@ -76,10 +78,15 @@ class Shortcode extends \CI_Controller
 				$data['print'] = (!empty($_REQUEST['print'])) ? $_REQUEST['print'] : false;
 				$view = 'profile_detail';
 				break;
+
 			case 'layanan':
+				$view = 'help';
 				break;
+
 			case 'lapor':
+				$view = 'lapor';
 				break;
+
 			case 'bantuan':
 				$nik = $_SESSION['nik'];
 				$data['daftar_bantuan'] = $this->db->select('p.*,pp.*')
@@ -87,6 +94,7 @@ class Shortcode extends \CI_Controller
 								->join('program p','p.id = pp.program_id')
 								->get('program_peserta pp')
 								->result_array();
+				$view = 'program_bantuan';
 				break;
 		}
 
