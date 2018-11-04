@@ -23,35 +23,35 @@
 			  </tr>
 			  <tr>
 				  <td colspan="3">
-					  <form action="<?php echo $data['mandiri_page']?>" method="get">
+					  <form action="<?php echo $mandiri_page?>" method="get">
 						  <button type="submit" name="mandiri" value="profil" class="btn btn-primary btn-block">Profil</button>
 					  </form>
 				  </td>
 			  </tr>
 			  <tr>
 				  <td colspan="3">
-					  <form action="<?php echo $data['mandiri_page']?>" method="get">
+					  <form action="<?php echo $mandiri_page?>" method="get">
 						  <button type="submit" name="mandiri" value="layanan" class="btn btn-primary btn-block">Layanan</button>
 					  </form>
 				  </td>
 			  </tr>
 			  <tr>
 				  <td colspan="3">
-					  <form action="<?php echo $data['mandiri_page']?>" method="get">
+					  <form action="<?php echo $mandiri_page?>" method="get">
 						  <button type="submit" name="mandiri" value="lapor" class="btn btn-primary btn-block">Lapor</button>
 					  </form>
 				  </td>
 			  </tr>
 			  <tr>
 				  <td colspan="3">
-					  <form action="<?php echo $data['mandiri_page']?>" method="get">
+					  <form action="<?php echo $mandiri_page?>" method="get">
 						  <button type="submit" name="mandiri" value="bantuan" class="btn btn-primary btn-block">Bantuan</button>
 					  </form>
 				  </td>
 			  </tr>
 			  <tr>
 				  <td colspan="3">
-					  <form action="<?php echo $data['mandiri_page']?>" method="get">
+					  <form action="<?php echo $mandiri_page?>" method="get">
 						  <button type="submit" name="mandiri" value="logoff" class="btn btn-danger btn-block">Keluar</button>
 					  </form>
 				  </td>
