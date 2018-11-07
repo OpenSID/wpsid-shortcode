@@ -1,24 +1,33 @@
-=== WPSID Shortcode ===
+# WPSID Shortcode
+
 Contributors: simasta
+
 Donate link: http://www.siini.com/wordpress/plugins/wpsid-shortcode/
+
 Tags: opensid, shortcode, sid, sistem informasi desa
+
 Requires at least: 4.3
+
 Tested up to: 4.8.1
+
 Stable tag: 1.0.9.2
+
 License: GPLv2 or later
 
 Integrate OpenSID and SID into Wrodpress.
 
-== Description ==
+# Description
 
 WPSID Shortcode integrate OpenSID and SID into Wrodpress with shortcodes. You can display statistics data from OpenSID and SID into wordpress. Visit [**http://wpsid-shortcode.plugin.demo.siini.com**](http://wpsid-shortcode.plugin.demo.siini.com/) for detail.
 
 
 If you find this useful, [**please consider donating**](http://www.siini.com/wordpress/plugins/wpsid-shortcode/) whatever sum you choose, **even just 10 cents**.
 
-[Panduan Memasang WPSID Shortcode](https://github.com/OpenSID/wpsid-shortcode/wiki/Memasang-WPSID-Shortcode)
 
-= The Shortcodes =
+# Panduan Memasang
+Klik [Panduan Memasang WPSID Shortcode](https://github.com/OpenSID/wpsid-shortcode/wiki/Memasang-WPSID-Shortcode)
+
+# The Shortcodes
 
 * [wpsid_data_wilayah]
 * [wpsid_version[ type="plain|html"]]
@@ -40,7 +49,7 @@ If you find this useful, [**please consider donating**](http://www.siini.com/wor
 * [wpsid_layanan_mandiri_detail]
 
 
-== Frequently Asked Questions ==
+# Frequently Asked Questions
 
 = Its free? =
 
