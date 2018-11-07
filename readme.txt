@@ -13,33 +13,10 @@ Integrate OpenSID and SID into Wrodpress.
 
 WPSID Shortcode integrate OpenSID and SID into Wrodpress with shortcodes. You can display statistics data from OpenSID and SID into wordpress. Visit [**http://wpsid-shortcode.plugin.demo.siini.com**](http://wpsid-shortcode.plugin.demo.siini.com/) for detail.
 
+
 If you find this useful, [**please consider donating**](http://www.siini.com/wordpress/plugins/wpsid-shortcode/) whatever sum you choose, **even just 10 cents**.
 
-== Installation ==
-
-= Requirements =
-* WordPress 4.3+
-* PHP 5.3+
-* OpenSID / SID CRI Installed
-
-= Steps =
-1. Download latest version Opensid from [OpenSID](https://codeload.github.com/eddieridwan/OpenSID/zip/master) or [SID CRI](httpp://sid.web.id) . 
-   Extract into wordpress folder, then rename into `opensid`.
-	Resulted dirs will be:
-   './opensid'
-   './opensid/donjo-app/'
-   './opensid/system/'
-   './opensid/....'
-   './wp-admin'
-   './wp-content'
-   './wp-includes'
-   ...
-1. Unzip plugin files and upload them under your '/wp-content/plugins/' directory. 
-   Resulted names will be:
-  './wp-content/plugins/wpsid-shortcode/*'
-1. Activate plugin at "Plugins" administration page.
-1. Verify configuration on admin panel.
-1. Place shortcodes build in opensid plugin to your post, page, or widget, or use `echo do_shortcode("[name_shortcode]")` code ini php files.
+[Panduan Memasang WPSID Shortcode](https://github.com/OpenSID/wpsid-shortcode/wiki/Memasang-WPSID-Shortcode)
 
 = The Shortcodes =
 
