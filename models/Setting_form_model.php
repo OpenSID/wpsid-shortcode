@@ -9,7 +9,7 @@ class Setting_form_model
 		$new_input = array();
 
 		if( isset($input['sid_path']) )
-			$new_input['sid_path'] = $this->remove_end_slash(((sanitize_text_field($input['sid_path']) != '') ? sanitize_text_field($input['sid_path']) : ABSPATH . 'opensid'));
+			$new_input['sid_path'] = realpath((sanitize_text_field($input['sid_path']) != '') ? sanitize_text_field($input['sid_path']) : ABSPATH . 'opensid');
 
 		if( isset($input['sid_home']) )
 			$new_input['sid_home'] = $this->remove_end_slash(((sanitize_text_field($input['sid_home']) != '') ? sanitize_text_field($input['sid_home']) : esc_url(site_url() . '/opensid')));
