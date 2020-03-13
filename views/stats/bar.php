@@ -1,10 +1,10 @@
 <?php
-$this->opensid->register_script( 'js/highcharts/exporting' );
+$this->opensid->register_script( 'js/highcharts/highcharts', ['jquery'] );
 $this->opensid->register_script( 'js/highcharts/highcharts-more' );
-$this->opensid->register_script( 'js/highcharts/highcharts' );
+$this->opensid->register_script( 'js/highcharts/exporting' );
 ?>
 <script type="text/javascript">
-		jQuery(function () {
+  document.addEventListener('DOMContentLoaded', (e) => {
 			var chart;
 			jQuery(document).ready(function () {
 				chart = new Highcharts.Chart({
