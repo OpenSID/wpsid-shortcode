@@ -6,6 +6,20 @@ use WPSID;
 class Opensid_model extends \CI_Model
 {
 	private $version;
+	private $assetPathPrefix = '';
+
+  public function __construct() {
+    $this->setAssetPathPrefix();
+  }
+
+  protected function setAssetPathPrefix() {
+    // SCRIPT_NAME = /a/b/c/index.php
+    $len = count(explode('/', $_SERVER['SCRIPT_NAME'])) - 2;
+    for ($i=0; $i<$len; $i++) {
+      $this->assetPathPrefix .= '/..';
+    }
+    $this->assetPathPrefix .= substr(WPSID::config('sid_path'), strlen($_SERVER['DOCUMENT_ROOT'])) . '/';
+  }
 
 	public function get_version() {
 		if (!$this->version) {
@@ -29,8 +43,7 @@ class Opensid_model extends \CI_Model
 	}
 
 	public function register_script( $name, array $dependencies = array(), array $localize_script = array(), $force_minified = false ) {
-		$js_file = "assets/{$name}.js";
-		$js_url = WPSID::config('sid_path') . '/' . $js_file;
+		$js_url = "{$this->assetPathPrefix}assets/$name.js";
 
 		wp_enqueue_script( "opendsid-{$name}", $js_url, $dependencies, WPSID::VERSION, true );
 
