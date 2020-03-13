@@ -27,12 +27,14 @@ class Shortcode extends \CI_Controller
 
 			case 'plain':
 			default:
-				printf(
-					__( 'Using Wordpress %s, ' . strtoupper( OPENSID_APP_TYPE ) . ' %s and WPSID Shortcode Plugin %s', 'wpsid-shortcode' ),
-					$data['wp_version'],
-					$data['opensid_version'],
-					$data['plugin_version']
-				);
+        if (empty($_GET['rest_route'])) {
+          printf(
+            __( 'Using Wordpress %s, ' . strtoupper( OPENSID_APP_TYPE ) . ' %s and WPSID Shortcode Plugin %s', 'wpsid-shortcode' ),
+            $data['wp_version'],
+            $data['opensid_version'],
+            $data['plugin_version']
+          );
+        }
 		}
 	}
 
