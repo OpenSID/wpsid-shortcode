@@ -5,19 +5,16 @@ use WPSID;
 
 class Statistik_model extends \CI_Model
 {
-	private $version;
-	private $path;
-
 	public function __construct() {
 	}
 
 	public function get_view($atts) {
-		$presentasi = strtr(
-			element('type', $atts),
+		$presentasiType = strtr(
+			element('type', (array)$atts),
 			array('grafik' => 'bar', 'tabel' => 'table')
 		) ?: 'default';
 
-		return "stats/$presentasi";
+		return "stats/$presentasiType";
 	}
 
 	public function get_data($jenis) {
