@@ -1,13 +1,20 @@
 <?php
-$this->opensid->register_script( 'js/highcharts/highcharts', ['jquery'] );
+$this->opensid->register_script( 'js/highcharts/highcharts' );
 $this->opensid->register_script( 'js/highcharts/highcharts-more' );
 $this->opensid->register_script( 'js/highcharts/exporting' );
+
+$chart_data = [];
+foreach ( $stat as $data ) {
+    if ( $data['nama'] && $data['jumlah'] !== "-" AND $data['nama'] !== "TOTAL" ) {
+      $chart_data[] = [$data['nama'], (int)$data['jumlah']];
+    }
+}
+$chart_data = json_encode($chart_data, 320);
 ?>
 
 <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', (e) => {
-			jQuery(document).ready(function () {
-				chart = new Highcharts.Chart({
+		new Highcharts.Chart({
 					chart:{
 						renderTo:'container-pie'
 					},
@@ -25,18 +32,11 @@ $this->opensid->register_script( 'js/highcharts/exporting' );
 							name:'Jumlah Populasi',
 							shadow:1,
 							border:1,
-							data:[
-								<?php  foreach ( $stat as $data ) { ?>
-									<?php if ( $data['jumlah'] != "-" AND $data['nama'] != "TOTAL" ) { ?>
-										['<?php echo esc_attr( $data['nama'] )?>',<?php echo esc_attr( $data['jumlah'] )?>],
-										<?php } ?>
-									<?php }?>
-							]
+							data: <?= $chart_data ?>,
 						}
 					]
 				});
-			});
-		});
+  });
 	</script>
 	<div class="box box-danger">
 		<div class="box-header with-border">
